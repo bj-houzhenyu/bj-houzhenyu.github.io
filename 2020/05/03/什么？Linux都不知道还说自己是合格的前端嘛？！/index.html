@@ -16,8 +16,13 @@
 
   <!-- 页面元数据 -->
   
-    <title>世间美好~我的第一条博客 - 侯先森的Blog</title>
+    <title>优秀前端必备的Linux冷门知识？！ - 侯先森的Blog</title>
   
+  
+    <meta name="description" content="
+ 前端工程师需要对Linux掌握到什么程度？
+我的回答是：前端切图仔根本就不需要掌握Linux，但合格的前端工程师是需要掌握一些必要的Linux命令的！ 
+">
   
 
   <!-- feed -->
@@ -337,30 +342,13 @@
   <section class='meta'>
     
       
-        
-
-  
-    <meting-js
-      mini='true'
-      autoplay='true'
-      volume='0.7'
-      loop='all'
-      order='random'
-      server='netease'
-      type='song'
-      id='16846091'>
-    </meting-js>
-  
-
-
-      
       
       <div class="meta" id="header-meta">
         
           
   <h1 class="title">
-    <a href="/2020/05/01/%E4%B8%96%E9%97%B4%E7%BE%8E%E5%A5%BD%E4%B8%8E%E4%BD%A0%E7%8E%AF%E7%8E%AF%E7%9B%B8%E6%89%A3/">
-      世间美好~我的第一条博客
+    <a href="/2020/05/03/%E4%BB%80%E4%B9%88%EF%BC%9FLinux%E9%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E8%BF%98%E8%AF%B4%E8%87%AA%E5%B7%B1%E6%98%AF%E5%90%88%E6%A0%BC%E7%9A%84%E5%89%8D%E7%AB%AF%E5%98%9B%EF%BC%9F%EF%BC%81/">
+      优秀前端必备的Linux冷门知识？！
     </a>
   </h1>
 
@@ -385,9 +373,9 @@
               
   
   <div class='new-meta-item category'>
-    <a href='/categories/%E7%94%9F%E6%B4%BB%E7%B1%BB/' rel="nofollow">
+    <a href='/categories/%E5%89%8D%E7%AB%AF%E5%B0%8F%E4%BC%8E%E4%BF%A9/' rel="nofollow">
       <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
-      <p>生活类</p>
+      <p>前端小伎俩</p>
     </a>
   </div>
 
@@ -398,7 +386,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年5月1日</p>
+    <p>发布于：2020年5月3日</p>
   </a>
 </div>
 
@@ -421,13 +409,225 @@
       <section class="article typo">
         <div class="article-entry" itemprop="articleBody">
           
-          <p>Hello~大家好，我是小猴子，在过去很长的一段时间里，一直想建立一个属于自己的博客。</p>
-<p>在这个科技发达的世界里，微博、朋友圈、抖音、知乎、豆瓣~！都是可以分享自己故事的优秀平台，为什么我还要这样搭建自己的博客呢？</p>
-<p>可能是想要更加自由，分享一些前端的小技巧，分享一些好听的音乐，分享一些生活的趣事~</p>
-<p>我是一名94年的前端攻城狮，曾在美丽的长沙度过自己大学四年时光，毅然来到北京这座充满机遇挑战的大城市，在北京度过了自己的两年时光，这两年我收获了很多，从茫然到坚定，从幼稚到成熟，从懒散到努力。马云爸爸说过 <strong>人们必须认识到，社会是最好的大学，错误是最好的老师。</strong>  没错，这两年我也有过后悔，有过失望，也有想过放弃… 但是人生不就是用来努力换取幸福的一的过程嘛？</p>
-<p>19年初就曾想过建立博客，奈何工作繁忙，常常加班，趁着想要换一个工作，在这段重新选择的空隙中，把自己的博客地基搭建起来啦~，（其他功能慢慢来吧=。=）。好在自己平时喜欢记录，以后呢，也会把曾经的故事心得分享在博客上，分享一些自己的工作经验，给想步入这行的小白们一些启示；也会总结分享一些技巧教程，<strong>路漫漫其修远兮，吾将上下而求索</strong> 。</p>
-<p>这是我博客的第一篇文章，只是为了测试出来的页面效果。。嘻嘻嘻</p>
-<p>对了，祝大家五一快乐，劳动最光荣！</p>
+          <blockquote>
+<p> <em>前端工程师需要对Linux掌握到什么程度？</em></p>
+<p>我的回答是：<strong>前端切图仔根本就不需要掌握Linux，但合格的前端工程师是需要掌握一些必要的Linux命令的！</strong> </p>
+</blockquote>
+<a id="more"></a>
+
+<blockquote>
+<p>随着业务架构演进，服务端和客户端的渲染层均交由FEer处理，越来越多的前端开始接触Linux，做一些安装部署NodeJS项目之类的工作，本篇的主要内容就是介绍Linux下的基础知识和常用命令，帮助前端工程师在服务器中自由自在的傲游。 </p>
+</blockquote>
+<p>说起Linux，作为一名长时间混迹IT圈的朋友们想必都听过了解过，这里引一下官方说明</p>
+<blockquote>
+<p>​     “Linux是一套免费使用和自由传播的开源程序，是一个基于POSIX和UNIX的多用户、多任务、支持多线程和多CPU的操作系统。被广泛的用于服务器、安卓系统等其它各种设备系统中所使用。” </p>
+</blockquote>
+<h1 id="发行版"><a href="#发行版" class="headerlink" title="发行版"></a>发行版</h1><p> 目前互联网公司使用的发行版主要是如下三个 </p>
+<ul>
+<li><p>CentOS </p>
+</li>
+<li><p>Debian </p>
+</li>
+<li><p>Ubuntu </p>
+<p>如何知道一台机器的发行版？ </p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+
+<p> 想知道一台机器的基本信息（内核版本等）？ </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br></pre></td></tr></table></figure>
+
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h3 id="用户与用户组"><a href="#用户与用户组" class="headerlink" title="用户与用户组"></a>用户与用户组</h3><p> 在Linux下，每个用户都属于一个用户组。文件和目录的读写权限等会根据<code>用户</code>和<code>用户组</code>来区分。对于组外的用户，称之为 <code>其他用户</code> `。 </p>
+<h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p>在Linux下目录是一等公民，万物开始于<code>/</code>。我们先说明一下系统根目录下常规的一些文件夹都是做什么的？详情见这张表 </p>
+<table>
+<thead>
+<tr>
+<th>目录名</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>/opt</td>
+<td>第三方软件</td>
+</tr>
+<tr>
+<td>/bin</td>
+<td>一般用户可用一些执行文件</td>
+</tr>
+<tr>
+<td>/sbin</td>
+<td>一些系统执行文件</td>
+</tr>
+<tr>
+<td>/tmp</td>
+<td>临时文件</td>
+</tr>
+<tr>
+<td>/home</td>
+<td>一般用户的文件目录</td>
+</tr>
+<tr>
+<td>/root</td>
+<td>root用户的文件目录</td>
+</tr>
+<tr>
+<td>/boot</td>
+<td>内核文件和开机引导程序等</td>
+</tr>
+<tr>
+<td>/dev</td>
+<td>设备文件</td>
+</tr>
+<tr>
+<td>/etc</td>
+<td>各种软件的配置文件和启动脚本</td>
+</tr>
+<tr>
+<td>/lib</td>
+<td>一些系统依赖的库</td>
+</tr>
+<tr>
+<td>/usr</td>
+<td>一些系统软件所在目录</td>
+</tr>
+<tr>
+<td>/var</td>
+<td>一些系统的日志文件和缓存文件</td>
+</tr>
+</tbody></table>
+<p> 上面这张表中/boot目录以上的是我们一定要理解清楚的目录，至于/boot及以下的目录只需大概了解就好。 </p>
+<h1 id="包管理工具"><a href="#包管理工具" class="headerlink" title="包管理工具"></a>包管理工具</h1><p>每个平台下有自己的包管理工具，作为一个常用Mac的前端工程师，你一定知道Homebrew，自己也常常<code>brew install</code>，安完就能在命令行中使用了，非常方便。Homebrew默认的源是在海外的，很慢很慢，所以大家一般会<a href="https://lug.ustc.edu.cn/wiki/mirrors/help/brew.git" target="_blank" rel="noopener">替换为国内的源</a>，就跟npm切成淘宝源一个意思。</p>
+<p>为什么扯这么多Mac上的东西那？原因在于，这套包管理机制和Linux各个发行版是一致的。各个发行版中推荐使用的包管理工具如下</p>
+<ul>
+<li>CentOS -&gt; yum</li>
+<li>Debian -&gt; apt-get</li>
+<li>Ubuntu -&gt; apt-get</li>
+</ul>
+<p>通过包管理工具，可以轻松安装相应的包，直接就可以在命令行中使用。</p>
+<p>其他还有一些相应格式安装包对应的安装工具，比如用于安装.deb文件的<code>dpkg</code>，还有用于安装.rpm文件的<code>rpm</code>。</p>
+<p>包的其实也不是什么高深的东西？其实就是一个或多个拥有可执行权限的文件，比如我们执行<code>node</code>命令，实际上就是执行了一个可执行的二进制文件。</p>
+<p>我们可以使用<code>which</code>命令查看可执行文件在哪里？例如<code>which node</code></p>
+<h1 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h1><h3 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h3><h4 id="man"><a href="#man" class="headerlink" title="man"></a>man</h4><p>绝大部分的软件安装都为执行程序提供了帮助手册<br>编译安装的软件，可以配置/etc/man.config<br>指定man手册路径</p>
+<p>man命令大多给出的文档非常详细，可能有的时候并不想详读，这时候推荐使用tldr查看帮助文档。tldr是一个在线的帮助文档工具，提供的文档比较社区化，简短易懂，悲伤的是Linux机器上默认是没有tldr的，需要自己安装下，详细文档在<a href="http://tldr.sh/" target="_blank" rel="noopener">这里</a>。</p>
+<h3 id="目录-amp-文件命令"><a href="#目录-amp-文件命令" class="headerlink" title="目录&amp;文件命令"></a>目录&amp;文件命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>简介</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cp</td>
+<td>复制文件/目录</td>
+<td><code>cp path/to/file.ext path/to/copy.ext</code> <code>cp path/to/file.ext path/to/copy</code></td>
+</tr>
+<tr>
+<td>rm</td>
+<td>删除文件/目录</td>
+<td><code>rm path/to/file</code> <code>rm -r path/to/folder</code></td>
+</tr>
+<tr>
+<td>mv</td>
+<td>移动文件/目录</td>
+<td><code>mv source target</code></td>
+</tr>
+<tr>
+<td>which</td>
+<td>查找命了文件所在位置</td>
+<td><code>which node</code></td>
+</tr>
+<tr>
+<td>find</td>
+<td>查找文件或目录</td>
+<td><code>find root_path -name &#39;*.ext&#39;</code> <code>find root_path -size +500k -size -10MB</code></td>
+</tr>
+<tr>
+<td>ln</td>
+<td>创建文件/目录的链接</td>
+<td><code>ln node-v6.2 node</code></td>
+</tr>
+<tr>
+<td>touch</td>
+<td>新建空文件</td>
+<td><code>touch filename</code></td>
+</tr>
+<tr>
+<td>file</td>
+<td>查看文件类型</td>
+<td><code>file filename</code></td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>查看当前工作目录</td>
+<td><code>pwd</code></td>
+</tr>
+<tr>
+<td>cd</td>
+<td>切换工作目录</td>
+<td><code>cd /path</code></td>
+</tr>
+<tr>
+<td>ls</td>
+<td>显示目录内容</td>
+<td><code>ls -lh</code></td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>创建新的目录</td>
+<td><code>mkdir –p /directory</code></td>
+</tr>
+<tr>
+<td>du</td>
+<td>统计目录及文件的空间占用情况</td>
+<td><code>du -sh</code> <code>du -h --max-depth=N path/to/folder</code></td>
+</tr>
+</tbody></table>
+<p>Tips: 几个常见的命令行参数<br>-h -human-readable 以人能看懂的方式展示<br>-r 递归文件夹<br>-f -force 强制</p>
+<h3 id="内容查看命令"><a href="#内容查看命令" class="headerlink" title="内容查看命令"></a>内容查看命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>简介</th>
+<th>示例</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cat</td>
+<td>查看显示文件内容</td>
+<td><code>cat filename</code></td>
+<td></td>
+</tr>
+<tr>
+<td>more/less</td>
+<td>分页查看文件内容</td>
+<td><code>less filename</code></td>
+<td></td>
+</tr>
+<tr>
+<td>head/tail</td>
+<td>查看文件开头/末尾的部分内容</td>
+<td><code>tail -f web.log</code></td>
+<td></td>
+</tr>
+<tr>
+<td>wc</td>
+<td>统计文件内容的单词数量等信息</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>grep</td>
+<td>检索过滤文件内容</td>
+<td><code>cat package.json</code></td>
+<td><code>grep &#39;vue&#39;</code></td>
+</tr>
+</tbody></table>
+<p>在文件查看命令中，我个人最推荐使用less命令，比较强大，基本可以满足我个人的所有需求</p>
+<blockquote>
+<p> 此为第一节全部内容，下一节我将详细介绍一些进程管理，CPU，内存使用量相关的命令，敬请期待。 </p>
+</blockquote>
 
           
             <div class='article_footer'>
@@ -516,7 +716,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-03T02:39:04+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-03T01:56:08+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
     <p>更新于：2020年5月3日</p>
@@ -543,7 +743,10 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://bj-houzhenyu.github.io/2020/05/01/%E4%B8%96%E9%97%B4%E7%BE%8E%E5%A5%BD%E4%B8%8E%E4%BD%A0%E7%8E%AF%E7%8E%AF%E7%9B%B8%E6%89%A3/&title=世间美好~我的第一条博客 - 侯先森的Blog&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://bj-houzhenyu.github.io/2020/05/03/%E4%BB%80%E4%B9%88%EF%BC%9FLinux%E9%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E8%BF%98%E8%AF%B4%E8%87%AA%E5%B7%B1%E6%98%AF%E5%90%88%E6%A0%BC%E7%9A%84%E5%89%8D%E7%AB%AF%E5%98%9B%EF%BC%9F%EF%BC%81/&title=优秀前端必备的Linux冷门知识？！ - 侯先森的Blog&summary=
+ 前端工程师需要对Linux掌握到什么程度？
+我的回答是：前端切图仔根本就不需要掌握Linux，但合格的前端工程师是需要掌握一些必要的Linux命令的！ 
+"
           
           >
           
@@ -555,7 +758,10 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://bj-houzhenyu.github.io/2020/05/01/%E4%B8%96%E9%97%B4%E7%BE%8E%E5%A5%BD%E4%B8%8E%E4%BD%A0%E7%8E%AF%E7%8E%AF%E7%9B%B8%E6%89%A3/&title=世间美好~我的第一条博客 - 侯先森的Blog&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://bj-houzhenyu.github.io/2020/05/03/%E4%BB%80%E4%B9%88%EF%BC%9FLinux%E9%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E8%BF%98%E8%AF%B4%E8%87%AA%E5%B7%B1%E6%98%AF%E5%90%88%E6%A0%BC%E7%9A%84%E5%89%8D%E7%AB%AF%E5%98%9B%EF%BC%9F%EF%BC%81/&title=优秀前端必备的Linux冷门知识？！ - 侯先森的Blog&summary=
+ 前端工程师需要对Linux掌握到什么程度？
+我的回答是：前端切图仔根本就不需要掌握Linux，但合格的前端工程师是需要掌握一些必要的Linux命令的！ 
+"
           
           >
           
@@ -567,7 +773,10 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://bj-houzhenyu.github.io/2020/05/01/%E4%B8%96%E9%97%B4%E7%BE%8E%E5%A5%BD%E4%B8%8E%E4%BD%A0%E7%8E%AF%E7%8E%AF%E7%9B%B8%E6%89%A3/&title=世间美好~我的第一条博客 - 侯先森的Blog&summary="
+          href="http://service.weibo.com/share/share.php?url=https://bj-houzhenyu.github.io/2020/05/03/%E4%BB%80%E4%B9%88%EF%BC%9FLinux%E9%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E8%BF%98%E8%AF%B4%E8%87%AA%E5%B7%B1%E6%98%AF%E5%90%88%E6%A0%BC%E7%9A%84%E5%89%8D%E7%AB%AF%E5%98%9B%EF%BC%9F%EF%BC%81/&title=优秀前端必备的Linux冷门知识？！ - 侯先森的Blog&summary=
+ 前端工程师需要对Linux掌握到什么程度？
+我的回答是：前端切图仔根本就不需要掌握Linux，但合格的前端工程师是需要掌握一些必要的Linux命令的！ 
+"
           
           >
           
@@ -591,18 +800,12 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/05/03/%E4%BB%80%E4%B9%88%EF%BC%9FLinux%E9%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E8%BF%98%E8%AF%B4%E8%87%AA%E5%B7%B1%E6%98%AF%E5%90%88%E6%A0%BC%E7%9A%84%E5%89%8D%E7%AB%AF%E5%98%9B%EF%BC%9F%EF%BC%81/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>优秀前端必备的Linux冷门知识？！</p>
-                <p class='content'>
- 前端工程师需要对Linux掌握到什么程度？
-我的回答是：前端切图仔根本就不需要掌握Linux，但合格的前端工程师是需要掌握一些必要的Linux命令的！ 
-
-
-
-
-随着业务架构演进，服务端和客...</p>
-              </a>
             
+              <a class='next' href='/2020/05/01/%E4%B8%96%E9%97%B4%E7%BE%8E%E5%A5%BD%E4%B8%8E%E4%BD%A0%E7%8E%AF%E7%8E%AF%E7%9B%B8%E6%89%A3/'>
+                <p class='title'>世间美好~我的第一条博客<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>Hello~大家好，我是小猴子，在过去很长的一段时间里，一直想建立一个属于自己的博客。
+在这个科技发达的世界里，微博、朋友圈、抖音、知乎、豆瓣~！都是可以分享自己故事的优秀平台，为什么我还要这样...</p>
+              </a>
             
           </div>
         
@@ -645,7 +848,7 @@
 
   <script>
     window.subData = {
-      title: '世间美好~我的第一条博客',
+      title: '优秀前端必备的Linux冷门知识？！',
       tools: true
     }
   </script>
@@ -660,6 +863,20 @@
     
     
 
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#用户与用户组"><span class="toc-text">用户与用户组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目录"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#帮助命令"><span class="toc-text">帮助命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#man"><span class="toc-text">man</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目录-amp-文件命令"><span class="toc-text">目录&amp;文件命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内容查看命令"><span class="toc-text">内容查看命令</span></a></li></ol>
+    </div>
+  </section>
 
 
   
