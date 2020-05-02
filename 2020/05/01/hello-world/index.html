@@ -605,6 +605,12 @@
         </section>
       
       
+        <section id="comments">
+          <div id="minivaline_container">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
     </section>
   </article>
 
@@ -917,6 +923,30 @@
   </script>
 
 
+
+  
+    
+<script src="https://unpkg.com/minivaline@latest/dist/MiniValine.min.js"></script>
+
+  
+  
+  <script>
+  new MiniValine({
+    el: '#minivaline_container',
+    appId: 'ru0x5aPE3uQwv6eH9KJpuvmA-gzGzoHsz',
+    appKey: '56PX6DNIYdWxLKBMecUed5eK',
+    placeholder: 'Write a Comment',
+    
+    lang: '',
+    adminEmailMd5: '',
+    math: 'true',
+    md: 'true',
+	NoRecordIP: 'false',
+	maxNest: '6',
+	pageSize: '6',
+	emoticonUrl: ["https://cdn.jsdelivr.net/gh/MiniValine/Bilibilis@master", "https://cdn.jsdelivr.net/npm/alus"]
+  });
+  </script>
 
 
 
