@@ -16,10 +16,8 @@
 
   <!-- 页面元数据 -->
   
-    <title>我的朋友们 - 侯先森的Blog</title>
+    <title>我的朋友们（该功能模块暂未开放哦~） - 侯先森的Blog</title>
   
-  
-    <meta name="description" content="​    这里写友链上方的内容">
   
 
   <!-- feed -->
@@ -342,7 +340,7 @@
           
   <h1 class="title">
     <a href="/friends/">
-      我的朋友们
+      我的朋友们（该功能模块暂未开放哦~）
     </a>
   </h1>
 
@@ -372,7 +370,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年5月1日</p>
+    <p>发布于：2020年5月3日</p>
   </a>
 </div>
 
@@ -393,7 +391,7 @@
 
 
       <section class="article article-entry l_friends">
-        <p>​    这里写友链上方的内容</p>
+        
         
           
             
@@ -488,7 +486,7 @@
           
         
         <br><br>
-        <p>这里写友链页面下方的文字备注，例如自己的友链规范、示例等</p>
+        
       </section>
   </article>
 
@@ -496,23 +494,7 @@
 
 
 
-  <article class="post white-box reveal comments shadow">
-    <section class="article typo">
-      <p ct><i class='fas fa-comments'></i> 评论</p>
-      
-      
-      
-      
-      
-        <section id="comments">
-          <div id="valine_container" class="valine_thread">
-            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
-          </div>
-        </section>
-      
-      
-    </section>
-  </article>
+  
 
 
 
@@ -587,15 +569,6 @@
       
         <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
 </div>
-      
-    
-      
-        本站使用
-        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
-        作为主题，总访问量为
-          <span id="busuanzi_value_site_pv"><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-          次
-        
       
     
       
@@ -721,60 +694,6 @@
 
 
 
-
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
-
-  
-  <script>
-  var GUEST_INFO = ['nick','mail','link'];
-  var meta = 'nick,mail,link'.split(',').filter(function(item){
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var REQUIRED_FIELDS = ['nick','mail','link'];
-  var requiredFields = 'nick,mail'.split(',').filter(function(item){
-    return REQUIRED_FIELDS.indexOf(item) > -1
-  });
-  var valine = new Valine();
-  function emoji(path, idx, ext) {
-      return path + "/" + path + "-" + idx + "." + ext;
-  }
-  var emojiMaps = {};
-  for (var i = 1; i <= 54; i++) {
-    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
-  }
-  for (var i = 1; i <= 101; i++) {
-    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
-  }
-  for (var i = 1; i <= 116; i++) {
-    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
-  }
-  for (var i = 1; i <= 125; i++) {
-    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
-  }
-  for (var i = 1; i <= 4; i++) {
-    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
-  }
-  valine.init({
-    el: '#valine_container',
-    meta: meta,
-    
-    appId: "ru0x5aPE3uQwv6eH9KJpuvmA-gzGzoHsz",
-    appKey: "56PX6DNIYdWxLKBMecUed5eK",
-    placeholder: "快来评论吧~",
-    pageSize:'10',
-    avatar:'robohash',
-    lang:'zh-cn',
-    visitor: 'true',
-    highlight: 'true',
-    mathJax: 'false',
-    enableQQ: 'true',
-    requiredFields: requiredFields,
-    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
-    emojiMaps: emojiMaps
-  })
-  </script>
 
 
 
