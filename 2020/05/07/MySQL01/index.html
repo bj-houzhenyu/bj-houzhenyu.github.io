@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#2.6.5'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>前端必会的mysql讲解 - 侯先森的Blog</title>
+  
+    <meta name="keywords" content="MySQL">
+  
+  
+    <meta name="description" content="
+随着现在前端开发人员与日俱增，社会如此美好，技术如此高超，不掌握一门神奇的语言怎么对得起将来的自己？？如果你曾几何时想自己开发简单服务器，那必少不了对数据库的操作，推荐Mysql~（如果看不懂最后的Node-mysql也别急，后期会慢慢来维护我的博客，对其分类总结哒！以后会找时间认证讲解Node.js，大家先学...">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
+
+  <!-- import link -->
+  
+
+  
+  
+    
+<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+  <div class='container'>
+  <div class='wrapper'>
+    <div class='nav-sub'>
+      <p class="title"></p>
+      <ul class='switcher nav-list-h'>
+        <li><a class="s-comment fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main">
+      
+        
+        <a class="title flat-box" target="_self" href='/'>
+          
+          
+          
+            小猴子
+          
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='nav-list-h'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      <div class="m_search">
+        <form name="searchform" class="form u-search-form">
+          <i class="icon fas fa-search fa-fw"></i>
+          <input type="text" class="input u-search-input" placeholder="Search..." />
+        </form>
+      </div>
+
+			<ul class='switcher nav-list-h'>
+				
+					<li><a class="s-search fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li>
+          <a class="s-menu fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a>
+          <ul class="menu-phone list-v navigation white-box">
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  <i class='fas fa-rss fa-fw'></i>博客
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  <i class='fas fa-folder-open fa-fw'></i>分类
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  <i class='fas fa-tags fa-fw'></i>标签
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  <i class='fas fa-archive fa-fw'></i>归档
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  <i class='fas fa-link fa-fw'></i>友链
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  <i class='fas fa-info-circle fa-fw'></i>关于
+                </a>
+                
+              </li>
+            
+          
+            
+          </ul>
+        </li>
+			</ul>
+		</div>
+	</div>
+  </div>
+</header>
+
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box reveal shadow article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+      
+      
+      <div class="meta" id="header-meta">
+        
+          
+  <h1 class="title">
+    <a href="/2020/05/07/MySQL01/">
+      前端必会的mysql讲解
+    </a>
+  </h1>
+
+
+        
+        <div class='new-meta-box'>
+          
+            
+          
+            
+              
+<div class='new-meta-item author'>
+  <a href="https://xaoxuu.com" target="_blank" rel="nofollow noopener">
+    <img src="">
+    <p>侯振宇</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/%E5%89%8D%E7%AB%AF%E5%B0%8F%E4%BC%8E%E4%BF%A9/' rel="nofollow">
+      <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>
+      <p>前端小伎俩</p>
+    </a>
+  </div>
+
+
+            
+          
+            
+              <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
+    <p>发布于：2020年5月7日</p>
+  </a>
+</div>
+
+            
+          
+            
+              
+
+            
+          
+        </div>
+        
+          <hr>
+        
+      </div>
+    
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <blockquote>
+<p>随着现在前端开发人员与日俱增，社会如此美好，技术如此高超，不掌握一门神奇的语言怎么对得起将来的自己？？如果你曾几何时想自己开发简单服务器，那必少不了对数据库的操作，推荐Mysql~（如果看不懂最后的Node-mysql也别急，后期会慢慢来维护我的博客，对其分类总结哒！以后会找时间认证讲解Node.js，大家先学一下数据库操作吧，码起来！！）</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><h2 id="数据库-MySQL"><a href="#数据库-MySQL" class="headerlink" title="数据库 MySQL"></a>数据库 MySQL</h2><h3 id="数据库入门"><a href="#数据库入门" class="headerlink" title="数据库入门"></a>数据库入门</h3><p>未来我们程序中的数据为了方便管理都通过数据库来存储。</p>
+<p>作为前端开发人员，对数据库做一定了解即可。</p>
+<h4 id="数据库基础知识"><a href="#数据库基础知识" class="headerlink" title="数据库基础知识"></a>数据库基础知识</h4><ul>
+<li>什么是数据库<ul>
+<li>存储数据的仓库</li>
+<li>使用数据库管理数据的好处<ul>
+<li>方便存储、查询、修改、删除</li>
+</ul>
+</li>
+<li>关系型数据库<ul>
+<li>MySQL</li>
+<li>Sql Server</li>
+<li>Orcale</li>
+<li>SQLite</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据表<ul>
+<li>二维的表，类似于Excel表</li>
+<li>由行和列组成，列：字段，行：记录</li>
+<li>字段的类型<ul>
+<li>int 整数、double 浮点数、varchar(255) 字符串、text 文本、datetime 日期、float 浮点数</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="MySQL-的服务器"><a href="#MySQL-的服务器" class="headerlink" title="MySQL 的服务器"></a>MySQL 的服务器</h4><ul>
+<li><p>下载地址：</p>
+<ul>
+<li><a href="https://dev.mysql.com/downloads/mysql/5.7.html#downloads" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/5.7.html#downloads</a></li>
+</ul>
+</li>
+<li><p>MySQL 安装与配置</p>
+<ul>
+<li><p>准备工作</p>
+<p>在 <strong>C 盘根目录</strong>建立目录： c:\develop</p>
+</li>
+<li><p>解压并移动位置</p>
+<p>解压缩 mysql-5.7.23 的压缩包，将<strong>其中</strong>的 <strong><code>mysql-5.7.23-xxxxx</code> 目录</strong>移动到 <code>C:\develop</code> 目录下并把名字修改为 <strong><code>mysql</code></strong></p>
+</li>
+<li><p>MySQL 的配置文件 my.ini</p>
+<p>在 <code>c:\develop\mysql</code> 目录下新建一个 <code>my.ini</code> 的配置文件</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[mysqld]</span></span><br><span class="line"><span class="comment"># MySQL 安装目录</span></span><br><span class="line"><span class="attr">basedir</span>=C:/develop/mysql</span><br><span class="line"><span class="comment"># 数据文件所在目录</span></span><br><span class="line"><span class="attr">datadir</span>=C:/develop/mysql/data</span><br><span class="line"><span class="attr">character-set-server</span>=utf8</span><br><span class="line"><span class="attr">sql-mode</span>=<span class="string">"STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>以管理员身份运行 CMD 执行以下命令，安装一个 MySQL 服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定位到安装目录下的 bin 文件夹</span></span><br><span class="line"><span class="comment"># cd &lt;MySQL安装目录&gt;\bin</span></span><br><span class="line"><span class="built_in">cd</span> c:\develep\mysql\bin</span><br><span class="line"><span class="comment"># 初始化数据所需文件以及获取一个临时的访问密码</span></span><br><span class="line">mysqld --initialize --user=mysql --console</span><br></pre></td></tr></table></figure>
+
+<p>初始化成功如下图：记下临时密码(只能使用一次)</p>
+<div class="fancybox caption">
+                <img src='http://s1.wailian.download/2020/05/07/1545190967742.png'>
+              </div>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将 MySQL 安装为服务 可以指定服务名称</span></span><br><span class="line">mysqld --install MySQL</span><br><span class="line"></span><br><span class="line"><span class="comment"># 没有以管理员的身份运行命令行</span></span><br><span class="line"><span class="comment"># 安装失败提示：Install/Remove of the Service Denied! </span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装成功后，启动 MySQL 服务器</span></span><br><span class="line">net start MySQL</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重置 MySQL  密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先通过用户名密码进入 MySQL 操作环境</span></span><br><span class="line">mysql -u root -p</span><br><span class="line">Enter password: <span class="comment"># 输入临时密码</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置数据库访问密码，一定要加分号</span></span><br><span class="line">mysql&gt; <span class="built_in">set</span> password <span class="keyword">for</span> root@localhost = password(<span class="string">'*******'</span>);</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="MySQL-的客户端"><a href="#MySQL-的客户端" class="headerlink" title="MySQL 的客户端"></a>MySQL 的客户端</h4><ul>
+<li>数据库的客户端 Navicat</li>
+<li>使用 Navicat 创建数据库</li>
+<li>使用 Navicat 创建表，添加数据</li>
+</ul>
+<h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><p>要在程序中对数据库进行操作需要 SQL 语句</p>
+<ul>
+<li><p>什么是 SQL</p>
+<ul>
+<li>SQL 指结构化查询语言</li>
+<li>SQL 使我们有能力访问数据库</li>
+<li><a href="http://www.w3school.com.cn/sql/index.asp" target="_blank" rel="noopener">参考网站</a></li>
+</ul>
+</li>
+<li><p>增删改查</p>
+<ul>
+<li><p>插入数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">users</span> (uname, upwd, uqq) <span class="keyword">values</span>(<span class="string">'zs'</span>,<span class="string">'123'</span>, <span class="string">'12345'</span>)</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> posts <span class="keyword">SET</span> uname=<span class="string">'zs'</span>, upwd=<span class="string">'123'</span>, uqq=<span class="string">'12345'</span></span><br><span class="line"><span class="comment">-- 如果是所有列，可以省略列名称，不推荐</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="keyword">users</span> <span class="keyword">values</span>(<span class="string">'zs'</span>,<span class="string">'123'</span>, <span class="string">'12345'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> <span class="keyword">users</span> <span class="keyword">SET</span> uname=<span class="string">'zsxxx'</span>, uqq=<span class="string">'111'</span> <span class="keyword">WHERE</span> uid=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>删除数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> uid = <span class="number">1</span></span><br><span class="line"><span class="comment">-- 不带条件删除表中所有数据，禁止使用</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> <span class="keyword">users</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><ul>
+<li><p>条件查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> uname=<span class="string">'zs'</span> <span class="keyword">AND</span> uname=<span class="string">'000000'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> uname=<span class="string">'zs'</span> <span class="keyword">OR</span> uname=<span class="string">'ls'</span></span><br></pre></td></tr></table></figure>
+
+<p>下面的运算符可在 WHERE 子句中使用：</p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>=</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>&lt;&gt;</td>
+<td>不等于</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于等于</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>BETWEEN</td>
+<td>在某个范围内</td>
+</tr>
+<tr>
+<td>LIKE</td>
+<td>搜索某种模式</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>模糊查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> uname <span class="keyword">like</span> <span class="string">'%s%'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>in 语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> uname <span class="keyword">in</span> (<span class="string">'zs'</span>,<span class="string">'ls'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>排序</p>
+<p>order by 要写在 sql 语句的最后</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- asc 升序  desc 降序</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">DESC</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">WHERE</span> uage &gt; <span class="number">18</span> <span class="keyword">ORDER</span> <span class="keyword">by</span> <span class="keyword">desc</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>限制查询条数</p>
+  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 取前3条数据</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">LIMIT</span> <span class="number">3</span>  </span><br><span class="line"><span class="comment">-- 降序后去3条数据</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">3</span></span><br><span class="line"><span class="comment">-- 跳过3条，取2条</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">users</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="keyword">DESC</span> <span class="keyword">LIMIT</span> <span class="number">3</span>,<span class="number">2</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取总条数</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">COUNT</span>(*) <span class="keyword">FROM</span> <span class="keyword">users</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表连接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_name(s)</span><br><span class="line"><span class="keyword">FROM</span> table_name1</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> table_name2 </span><br><span class="line"><span class="keyword">ON</span> table_name1.column_name=table_name2.column_name</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Node-js-中操作-MySQL"><a href="#Node-js-中操作-MySQL" class="headerlink" title="Node.js 中操作 MySQL"></a>Node.js 中操作 MySQL</h2><h3 id="使用-mysql-第三方包"><a href="#使用-mysql-第三方包" class="headerlink" title="使用 mysql 第三方包"></a>使用 mysql 第三方包</h3><p><a href="https://github.com/mysqljs/mysql" target="_blank" rel="noopener">https://github.com/mysqljs/mysql</a></p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mysql</span><br></pre></td></tr></table></figure>
+
+<h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> mysql      = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;</span><br><span class="line">  host     : <span class="string">'localhost'</span>,</span><br><span class="line">  user     : <span class="string">'me'</span>,</span><br><span class="line">  password : <span class="string">'secret'</span>,</span><br><span class="line">  database : <span class="string">'my_db'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.connect();</span><br><span class="line"></span><br><span class="line">connection.query(<span class="string">'SELECT 1 + 1 AS solution'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'The solution is: '</span>, results[<span class="number">0</span>].solution);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.end();</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h3><h4 id="查询-1"><a href="#查询-1" class="headerlink" title="查询"></a>查询</h4><p>基本查询：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">connection.query(<span class="string">'SELECT * FROM `books` WHERE `author` = "David"'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// error will be an Error if one occurred during the query</span></span><br><span class="line">  <span class="comment">// results will contain the results of the query</span></span><br><span class="line">  <span class="comment">// fields will contain information about the returned results fields (if any)</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>条件查询：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">connection.query(<span class="string">'SELECT * FROM `books` WHERE `author` = ?'</span>, [<span class="string">'David'</span>], <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// error will be an Error if one occurred during the query</span></span><br><span class="line">  <span class="comment">// results will contain the results of the query</span></span><br><span class="line">  <span class="comment">// fields will contain information about the returned results fields (if any)</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> post  = &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">title</span>: <span class="string">'Hello MySQL'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> query = connection.query(<span class="string">'INSERT INTO posts SET ?'</span>, post, <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">  <span class="comment">// Neat!</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="built_in">console</span>.log(query.sql); <span class="comment">// INSERT INTO posts SET `id` = 1, `title` = 'Hello MySQL'</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">connection.query(<span class="string">'DELETE FROM posts WHERE title = "wrong"'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'deleted '</span> + results.affectedRows + <span class="string">' rows'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">connection.query(<span class="string">'UPDATE users SET foo = ?, bar = ?, baz = ? WHERE id = ?'</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, userId], <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (error) <span class="keyword">throw</span> error;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="封装-dbHelper-js"><a href="#封装-dbHelper-js" class="headerlink" title="封装 dbHelper.js"></a>封装 dbHelper.js</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> connection = mysql.createConnection(&#123;</span><br><span class="line">  host     : <span class="string">'localhost'</span>,</span><br><span class="line">  port     : <span class="number">3306</span>,</span><br><span class="line">  user     : <span class="string">'root'</span>,</span><br><span class="line">  password : <span class="string">'root'</span>,</span><br><span class="line">  database : <span class="string">'guestbook'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">exports.query = <span class="function">(<span class="params">sql, params, callback</span>) =&gt;</span> &#123;</span><br><span class="line">  connection.connect();</span><br><span class="line">  connection.query(sql, params, <span class="function"><span class="keyword">function</span> (<span class="params">error, results, fields</span>) </span>&#123; </span><br><span class="line">    callback(error, results, fields);</span><br><span class="line">  &#125;);</span><br><span class="line">  connection.end();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+          
+            <div class='article_footer'>
+              
+                
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+
+
+  
+
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>Hi，我叫小猴子，是一名前端工程师，我会不定期在这个博客中记录一些东西，希望对你有所帮助~，也欢迎大家在下方进行评论，蟹蟹</p>
+
+          
+        
+          
+            <p><strong>喜欢就在下方支持一下博主啦啦啦（左侧支付宝右侧微信）</strong></p>
+
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+
+<section class="widget qrcode  desktop mobile">
+  
+
+  <div class='content article-entry'>
+    
+      
+        <div class='fancybox'><img src='http://s1.wailian.download/2020/05/03/zhifubao.png'
+        
+          height='200px'
+        ></div>
+      
+    
+      
+        <div class='fancybox'><img src='http://s1.wailian.download/2020/05/03/weixin.png'
+        
+          height='200px'
+        ></div>
+      
+    
+  </div>
+</section>
+
+  
+
+
+              
+            </div>
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-07T00:48:56+08:00">
+  <a class='notlink'>
+    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
+    <p>更新于：2020年5月7日</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/MySQL/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>MySQL</p></a></div>
+
+
+        
+      
+        
+          
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://bj-houzhenyu.github.io/2020/05/07/MySQL01/&title=前端必会的mysql讲解 - 侯先森的Blog&summary=
+随着现在前端开发人员与日俱增，社会如此美好，技术如此高超，不掌握一门神奇的语言怎么对得起将来的自己？？如果你曾几何时想自己开发简单服务器，那必少不了对数据库的操作，推荐Mysql~（如果看不懂最后的Node-mysql也别急，后期会慢慢来维护我的博客，对其分类总结哒！以后会找时间认证讲解Node.js，大家先学一下数据库操作吧，码起来！！）
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://bj-houzhenyu.github.io/2020/05/07/MySQL01/&title=前端必会的mysql讲解 - 侯先森的Blog&summary=
+随着现在前端开发人员与日俱增，社会如此美好，技术如此高超，不掌握一门神奇的语言怎么对得起将来的自己？？如果你曾几何时想自己开发简单服务器，那必少不了对数据库的操作，推荐Mysql~（如果看不懂最后的Node-mysql也别急，后期会慢慢来维护我的博客，对其分类总结哒！以后会找时间认证讲解Node.js，大家先学一下数据库操作吧，码起来！！）
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://bj-houzhenyu.github.io/2020/05/07/MySQL01/&title=前端必会的mysql讲解 - 侯先森的Blog&summary=
+随着现在前端开发人员与日俱增，社会如此美好，技术如此高超，不掌握一门神奇的语言怎么对得起将来的自己？？如果你曾几何时想自己开发简单服务器，那必少不了对数据库的操作，推荐Mysql~（如果看不懂最后的Node-mysql也别急，后期会慢慢来维护我的博客，对其分类总结哒！以后会找时间认证讲解Node.js，大家先学一下数据库操作吧，码起来！！）
+"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/05/03/ifream01/'>
+                <p class='title'>别人家的孩子—ifream<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>
+说起iframe，大家都会觉得很嫌弃或者很不愿接近，原因大概都是：能耗高，安全问题，spider不喜欢它…也有（不少）同学内心独白就是：不！这很low很dirty，我才不想用惹！但是我们必须的...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box reveal comments shadow">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> 评论</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
+          </div>
+        </section>
+      
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '前端必会的mysql讲解',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库-MySQL"><span class="toc-text">数据库 MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库入门"><span class="toc-text">数据库入门</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库基础知识"><span class="toc-text">数据库基础知识</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL-的服务器"><span class="toc-text">MySQL 的服务器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL-的客户端"><span class="toc-text">MySQL 的客户端</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL"><span class="toc-text">SQL</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询"><span class="toc-text">查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Node-js-中操作-MySQL"><span class="toc-text">Node.js 中操作 MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-mysql-第三方包"><span class="toc-text">使用 mysql 第三方包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hello-World"><span class="toc-text">Hello World</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#增删改查"><span class="toc-text">增删改查</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#查询-1"><span class="toc-text">查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加"><span class="toc-text">添加</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#删除"><span class="toc-text">删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#修改"><span class="toc-text">修改</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#封装-dbHelper-js"><span class="toc-text">封装 dbHelper.js</span></a></li></ol></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='true'
+      volume='0.7'
+      loop='all'
+      order='random'
+      fixed='false'
+      list-max-height='340px'
+      server='netease'
+      type='playlist'
+      id='3778678'
+      list-folded='true'>
+    </meting-js>
+  
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="https://github.com/bj-houzhenyu"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://music.163.com/#/user/home?id=428162349"
+                class="social fas fa-headphones-alt flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="">Copyright © 2020 小猴子</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.6/dist/scrollreveal.min.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      ScrollReveal().reveal('.l_main .reveal', {
+        distance: '8px',
+        duration: '800',
+        interval: '100',
+        scale: '1'
+      });
+    });
+  </script>
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/bj-houzhenyu/picBed/img/201705041834215084.jpg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js"></script>
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js"></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4/dist/Valine.min.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var meta = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var REQUIRED_FIELDS = ['nick','mail','link'];
+  var requiredFields = 'nick,mail'.split(',').filter(function(item){
+    return REQUIRED_FIELDS.indexOf(item) > -1
+  });
+  var valine = new Valine();
+  function emoji(path, idx, ext) {
+      return path + "/" + path + "-" + idx + "." + ext;
+  }
+  var emojiMaps = {};
+  for (var i = 1; i <= 54; i++) {
+    emojiMaps['tieba-' + i] = emoji('tieba', i, 'png');
+  }
+  for (var i = 1; i <= 101; i++) {
+    emojiMaps['qq-' + i] = emoji('qq', i, 'gif');
+  }
+  for (var i = 1; i <= 116; i++) {
+    emojiMaps['aru-' + i] = emoji('aru', i, 'gif');
+  }
+  for (var i = 1; i <= 125; i++) {
+    emojiMaps['twemoji-' + i] = emoji('twemoji', i, 'png');
+  }
+  for (var i = 1; i <= 4; i++) {
+    emojiMaps['weibo-' + i] = emoji('weibo', i, 'png');
+  }
+  valine.init({
+    el: '#valine_container',
+    meta: meta,
+    
+    appId: "ru0x5aPE3uQwv6eH9KJpuvmA-gzGzoHsz",
+    appKey: "56PX6DNIYdWxLKBMecUed5eK",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'robohash',
+    lang:'zh-cn',
+    visitor: 'true',
+    highlight: 'true',
+    mathJax: 'false',
+    enableQQ: 'true',
+    requiredFields: requiredFields,
+    emojiCDN: 'https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/emoji/valine/',
+    emojiMaps: emojiMaps
+  })
+  </script>
+
+
+
+
+
+  
+<script src="/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.6.4/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-check-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-check-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-times-circle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('fa-times-circle');
+          $icon.addClass('fa-copy');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "";
+  $(".article-entry").find("div.fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
