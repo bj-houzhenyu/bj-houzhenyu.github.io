@@ -433,71 +433,15 @@
         <blockquote>
 <p>​    为什么要分享这篇文章呢，是因为前一个月公司有项目重构，在简化优化代码的同时发现代码中有大量的 if 语句，这会让人有时候觉得很痛苦。其实，在很多地方，我们可以不需要它们。我们可以将if语句替换为其他类型的代码，以使我们的代码更短，更清晰。</p>
 </blockquote>
-<p><strong>三元运算符</strong></p>
-<p>如果我们要返回具有一个条件的一个事件，否则返回其他东西，则三元运算符很有用。</p>
-<p>例如，我们可以这样写：</p>
-<ul>
-<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = foo ? <span class="string">'foo'</span> : <span class="string">'bar'</span>;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>在上面的代码中，如果foo为true，则返回’foo’。否则，我们返回’bar’。</p>
-<p>然后，如果foo为true，则bar为’foo’。否则，bar为’bar’。</p>
-<p>上面代码比以下简短得多：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = <span class="function">(<span class="params">(foo</span>) =&gt;</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (foo) &#123;    </span><br><span class="line">        <span class="keyword">return</span> <span class="string">'foo'</span>  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="string">'bar'</span></span><br><span class="line">&#125;)(foo);</span><br></pre></td></tr></table></figure>
-
-<p>使用三元运算符，我们不必使用内部if语句定义一个匿名函数，如果foo为true，则返回“ foo”，否则返回“ bar”。</p>
-<p>另外，定义后，我们不必立即使用foo调用它。因此，它更容易读写。</p>
-<p>但是，我们不应该通过嵌套它们来滥用三元运算符：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = a ? b ? c ? <span class="string">'foo'</span> : <span class="string">'bar'</span> : <span class="string">'baz'</span> : <span class="string">'qux'</span>;</span><br></pre></td></tr></table></figure>
-
-<p>上面的代码很难阅读，因为我们必须在括号内加括号以在我们自己的脑海中划定界限。</p>
-<p>这在我们的大脑上很难解决，因此我们不应该采用上述表达。</p>
-<p><strong>短路表达式</strong></p>
-<p>我们将使用&amp;&amp;或|| 的操作员称为短路操作员。</p>
-<p>如果第一个操作数为真，则&amp;&amp;运算符对于在第二个操作数中运行代码很有用。|| 如果第一个操作数为false，则运算符对于在第二个操作数中运行代码很有用。</p>
-<p>例如，我们可以按以下方式使用它：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isOnline = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">const</span> makeRequest = <span class="function"><span class="params">()</span> =&gt;</span> &#123;  </span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line">isOnline &amp;&amp; makeRequest();</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，如果isOnline为true，则调用makeRequest。因此，由于isOnline为true，所以我们调用makeRequest函数。</p>
-<p>这将替换以下if语句：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (isOnline) &#123;  makeRequest();&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如我们所见，在使用相同的isOnline和makeRequest值的情况下，使用if语句需要3行代码来完成相同的操作。</p>
-<p>与|| 运算符，如果第一个操作数为false，则可以使用它来设置默认值。</p>
-<p>例如，我们可以编写以下代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">const</span> bar = foo || <span class="string">'abc'</span>;</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，我们将foo设置为null，这是false。因此，在第二行，|| 运算符将计算foo常量，该常量为null，因此也为false。</p>
-<p>然后，由于它是false，它将继续评估第二个操作数，然后将其返回。</p>
-<p>因此，bar的值为’abc’。编码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = foo || <span class="string">'abc'</span>;</span><br></pre></td></tr></table></figure>
-
-<p>替换以下代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = <span class="function">(<span class="params">(foo</span>) =&gt;</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (!foo) &#123;    </span><br><span class="line">        <span class="keyword">return</span> <span class="string">'abc'</span>  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> foo;</span><br><span class="line">&#125;)(foo)</span><br></pre></td></tr></table></figure>
-
-<p>如我们所见，我们必须定义一个匿名函数，然后调用它。</p>
-<p>该函数将foo作为参数，然后在其内部检查foo是否虚假。如果是虚假的，那么我们返回’abc’。否则，我们返回foo。</p>
-<p>||的替代品 运算符更长，更复杂。</p>
-<p><strong>避免使用switch语句</strong></p>
-<p>switch语句的许多用法可以用更简单的方法代替。例如，代替编写以下switch语句：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getDescription = <span class="function">(<span class="params">breed</span>) =&gt;</span> &#123;  </span><br><span class="line">    <span class="keyword">switch</span> (breed) &#123;    </span><br><span class="line">        <span class="keyword">case</span> <span class="string">'border'</span>:      </span><br><span class="line">            <span class="keyword">return</span> <span class="string">'kind dog'</span>;    </span><br><span class="line">        <span class="keyword">case</span> <span class="string">'pitbull'</span>:      </span><br><span class="line">            <span class="keyword">return</span> <span class="string">'angry dog'</span>;    </span><br><span class="line">        <span class="keyword">case</span> <span class="string">'german'</span>:      </span><br><span class="line">            <span class="keyword">return</span> <span class="string">'smart dog'</span>;    </span><br><span class="line">        <span class="keyword">default</span>:      </span><br><span class="line">            <span class="keyword">return</span> <span class="string">''</span>  </span><br><span class="line">    &#125;&#125;</span><br><span class="line"><span class="keyword">const</span> desc = getDescription(<span class="string">'border'</span>);</span><br></pre></td></tr></table></figure>
-
-<p>我们可以将值放在对象中，如下所示：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> descs = &#123;  </span><br><span class="line">    <span class="string">'border'</span>: <span class="string">'kind dog'</span>,  </span><br><span class="line">    <span class="string">'pitbull'</span>: <span class="string">'angry dog'</span>,  </span><br><span class="line">    <span class="string">'german'</span>: <span class="string">'smart dog'</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> desc = descs[<span class="string">'border'</span>]</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，我们将case值作为属性，将返回值作为属性的值。</p>
-<p>然后，我们可以像在最后一行中一样获取值，而不用调用longyswitch语句。</p>
-<p>如果要获取默认情况，可以使用||。如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> desc = descs[<span class="string">'foo'</span>] || <span class="string">''</span>;</span><br></pre></td></tr></table></figure>
-
-<p>现在，我们将一个长的switch语句缩小为一个小对象。</p>
-<p><strong>结论</strong></p>
-<p>在许多情况下，我们可以减少if并将语句切换为较短的代码。我们应该记住要使用三元运算符，短路运算和将switch语句更改为字典对象的快捷方式，以使我们的代码更短，更清晰。</p>
-
       
     </div>
     
+      
+        <div class="button readmore">
+          <a href="/2020/05/16/20200516/">
+            Read More <i class="fas fa-chevron-right"></i>
+          </a>
+        </div>
       
     
   </section>
