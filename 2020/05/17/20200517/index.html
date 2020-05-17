@@ -16,14 +16,14 @@
 
   <!-- 页面元数据 -->
   
-    <title>如何避免在javaScript中避免使用大量if语句~！ - 侯先森的Blog</title>
+    <title>那些必会的js最佳做法——创建对象 - 侯先森的Blog</title>
   
-    <meta name="keywords" content="优化代码">
+    <meta name="keywords" content="面向对象">
   
   
     <meta name="description" content="
-​    为什么要分享这篇文章呢，是因为前一个月公司有项目重构，在简化优化代码的同时发现代码中有大量的 if 语句，这会让人有时候觉得很痛苦。其实，在很多地方，我们可以不需要它们。我们可以将if语句替换为其他类型的代码，以使我们的代码更短，更清晰。
-">
+​    这几天正在翻看一些公司的招聘信息，看到很多都有一条要求掌握面向对象编程！确实面向对象是每个前端工程师必备的技能，在这里就简单写一下我理解的，分享给大家，面向对象编程并不是一下两下就能说清楚，所以这只是第一篇哦！
+JavaScript是一种非常宽容的语言。编写即使有些小错误的代码，依然可以很容易的运行。...">
   
 
   <!-- feed -->
@@ -348,8 +348,8 @@
         
           
   <h1 class="title">
-    <a href="/2020/05/16/20200516/">
-      如何避免在javaScript中避免使用大量if语句~！
+    <a href="/2020/05/17/20200517/">
+      那些必会的js最佳做法——创建对象
     </a>
   </h1>
 
@@ -387,7 +387,7 @@
               <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年5月16日</p>
+    <p>发布于：2020年5月17日</p>
   </a>
 </div>
 
@@ -411,71 +411,58 @@
         <div class="article-entry" itemprop="articleBody">
           
           <blockquote>
-<p>​    为什么要分享这篇文章呢，是因为前一个月公司有项目重构，在简化优化代码的同时发现代码中有大量的 if 语句，这会让人有时候觉得很痛苦。其实，在很多地方，我们可以不需要它们。我们可以将if语句替换为其他类型的代码，以使我们的代码更短，更清晰。</p>
+<p>​    这几天正在翻看一些公司的招聘信息，看到很多都有一条要求掌握面向对象编程！确实面向对象是每个前端工程师必备的技能，在这里就简单写一下我理解的，分享给大家，面向对象编程并不是一下两下就能说清楚，所以这只是第一篇哦！</p>
+<p>JavaScript是一种非常宽容的语言。编写即使有些小错误的代码，依然可以很容易的运行。</p>
+<p>在本文中，我们将探讨创建JavaScript对象的最佳方法，而不是通过使用Object构造函数。</p>
 </blockquote>
 <a id="more"></a>
 
-<p><strong>三元运算符</strong></p>
-<p>如果我们要返回具有一个条件的一个事件，否则返回其他东西，则三元运算符很有用。</p>
-<p>例如，我们可以这样写：</p>
-<ul>
-<li><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = foo ? <span class="string">'foo'</span> : <span class="string">'bar'</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Don’t-use-the-Object-建设者"><a href="#Don’t-use-the-Object-建设者" class="headerlink" title="Don’t use the Object 建设者"></a>Don’t use the Object 建设者</h3><p>Object构造函数允许我们创建一个对象。但是，由于有更短的创建对象的方法，因此不需要创建对象。<br>例如，代替使用Object构造函数创建对象来编写以下内容，我们可以编写为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = <span class="keyword">new</span> <span class="built_in">Object</span>（）;</span><br><span class="line">obj.a = <span class="number">1</span>;</span><br><span class="line">obj.b = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ul>
-<p>在上面的代码中，如果foo为true，则返回’foo’。否则，我们返回’bar’。</p>
-<p>然后，如果foo为true，则bar为’foo’。否则，bar为’bar’。</p>
-<p>上面代码比以下简短得多：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = <span class="function">(<span class="params">(foo</span>) =&gt;</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (foo) &#123;    </span><br><span class="line">        <span class="keyword">return</span> <span class="string">'foo'</span>  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> <span class="string">'bar'</span></span><br><span class="line">&#125;)(foo);</span><br></pre></td></tr></table></figure>
+<p>我们也可以这样写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  a：<span class="number">1</span>，</span><br><span class="line">  b：<span class="number">2</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p>使用三元运算符，我们不必使用内部if语句定义一个匿名函数，如果foo为true，则返回“ foo”，否则返回“ bar”。</p>
-<p>另外，定义后，我们不必立即使用foo调用它。因此，它更容易读写。</p>
-<p>但是，我们不应该通过嵌套它们来滥用三元运算符：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = a ? b ? c ? <span class="string">'foo'</span> : <span class="string">'bar'</span> : <span class="string">'baz'</span> : <span class="string">'qux'</span>;</span><br></pre></td></tr></table></figure>
+<p>如我们所见，通过直接创建对象文字而不是使用Object构造函数，我们避免了很多额外的代码输入。</p>
+<p>我们还可以创建构造函数或类来创建模板函数，以用于创建新对象。</p>
+<p>例如，我们可以Person使用类语法创建构造函数，以便可以Person使用new运算符创建新的对象。</p>
+<p>我们可以编写以下代码来创建Person构造函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>上面的代码很难阅读，因为我们必须在括号内加括号以在我们自己的脑海中划定界限。</p>
-<p>这在我们的大脑上很难解决，因此我们不应该采用上述表达。</p>
-<p><strong>短路表达式</strong></p>
-<p>我们将使用&amp;&amp;或|| 的操作员称为短路操作员。</p>
-<p>如果第一个操作数为真，则&amp;&amp;运算符对于在第二个操作数中运行代码很有用。|| 如果第一个操作数为false，则运算符对于在第二个操作数中运行代码很有用。</p>
-<p>例如，我们可以按以下方式使用它：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> isOnline = <span class="literal">true</span>;</span><br><span class="line"><span class="keyword">const</span> makeRequest = <span class="function"><span class="params">()</span> =&gt;</span> &#123;  </span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line">isOnline &amp;&amp; makeRequest();</span><br></pre></td></tr></table></figure>
+<p>在上面的类中，我们有name用于在name实例中设置实例变量的参数Person。</p>
+<p>然后，我们可以Person使用它创建多个实例，如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> jane = <span class="keyword">new</span> Person（<span class="string">'jane'</span>）;</span><br><span class="line"><span class="keyword">const</span> joe = <span class="keyword">new</span> Person（<span class="string">'joe'</span>）;</span><br><span class="line"><span class="keyword">const</span> alex = <span class="keyword">new</span> Person（<span class="string">'alex'</span>）;</span><br></pre></td></tr></table></figure>
 
-<p>在上面的代码中，如果isOnline为true，则调用makeRequest。因此，由于isOnline为true，所以我们调用makeRequest函数。</p>
-<p>这将替换以下if语句：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (isOnline) &#123;  makeRequest();&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的代码中，我们创建了3个新Person实例，它们具有不同的值，this.name这些值是通过name参数传递的。</p>
+<p>我们还可以通过编写以下代码将实例方法添加到类中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">  &#125;</span><br><span class="line">  greet(greeting) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;greeting&#125;</span> <span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>如我们所见，在使用相同的isOnline和makeRequest值的情况下，使用if语句需要3行代码来完成相同的操作。</p>
-<p>与|| 运算符，如果第一个操作数为false，则可以使用它来设置默认值。</p>
-<p>例如，我们可以编写以下代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">const</span> bar = foo || <span class="string">'abc'</span>;</span><br></pre></td></tr></table></figure>
+<p>在上面的代码中，我们有greetinstance方法，该方法接受一个greeting字符串并将其与this.nameinstance变量组合。</p>
+<p>然后我们可以这样称呼它：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log（jane.greet（<span class="string">'hi'</span>））;</span><br><span class="line"><span class="built_in">console</span>.log（joe.greet（<span class="string">'hi'</span>））;</span><br><span class="line"><span class="built_in">console</span>.log（alex.greet（<span class="string">'hi'</span>））;</span><br></pre></td></tr></table></figure>
 
-<p>在上面的代码中，我们将foo设置为null，这是false。因此，在第二行，|| 运算符将计算foo常量，该常量为null，因此也为false。</p>
-<p>然后，由于它是false，它将继续评估第二个操作数，然后将其返回。</p>
-<p>因此，bar的值为’abc’。编码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = foo || <span class="string">'abc'</span>;</span><br></pre></td></tr></table></figure>
+<p>然后我们得到：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hi jane</span><br><span class="line">hi joe</span><br><span class="line">hi alex</span><br></pre></td></tr></table></figure>
 
-<p>替换以下代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = <span class="function">(<span class="params">(foo</span>) =&gt;</span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> (!foo) &#123;    </span><br><span class="line">        <span class="keyword">return</span> <span class="string">'abc'</span>  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="keyword">return</span> foo;</span><br><span class="line">&#125;)(foo)</span><br></pre></td></tr></table></figure>
+<p>记录在控制台日志输出中，如我们所说greet的那样传递’hi’为的值greeting。</p>
+<p>如我们所见，使用JavaScript类，我们可以创建具有相同实例变量和方法的对象。</p>
+<p><strong>创建对象的另一种方法是使用Object.create方法。</strong>此方法很有用，因为我们可以在创建对象时设置对象的原型。</p>
+<p>例如，如果我们要创建一个以另一个对象作为原型的对象，则可以编写以下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> bar = &#123;</span><br><span class="line">  a：<span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> foo = <span class="built_in">Object</span>.create（bar）;</span><br><span class="line">foo.b = <span class="number">1</span>;</span><br><span class="line">foo.c = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
 
-<p>如我们所见，我们必须定义一个匿名函数，然后调用它。</p>
-<p>该函数将foo作为参数，然后在其内部检查foo是否虚假。如果是虚假的，那么我们返回’abc’。否则，我们返回foo。</p>
-<p>||的替代品 运算符更长，更复杂。</p>
-<p><strong>避免使用switch语句</strong></p>
-<p>switch语句的许多用法可以用更简单的方法代替。例如，代替编写以下switch语句：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getDescription = <span class="function">(<span class="params">breed</span>) =&gt;</span> &#123;  </span><br><span class="line">    <span class="keyword">switch</span> (breed) &#123;    </span><br><span class="line">        <span class="keyword">case</span> <span class="string">'border'</span>:      </span><br><span class="line">            <span class="keyword">return</span> <span class="string">'kind dog'</span>;    </span><br><span class="line">        <span class="keyword">case</span> <span class="string">'pitbull'</span>:      </span><br><span class="line">            <span class="keyword">return</span> <span class="string">'angry dog'</span>;    </span><br><span class="line">        <span class="keyword">case</span> <span class="string">'german'</span>:      </span><br><span class="line">            <span class="keyword">return</span> <span class="string">'smart dog'</span>;    </span><br><span class="line">        <span class="keyword">default</span>:      </span><br><span class="line">            <span class="keyword">return</span> <span class="string">''</span>  </span><br><span class="line">    &#125;&#125;</span><br><span class="line"><span class="keyword">const</span> desc = getDescription(<span class="string">'border'</span>);</span><br></pre></td></tr></table></figure>
+<p>在上面的代码中，我们有了bar对象，该foo对象通过使用Object.create方法用作对象的原型。</p>
+<p>然后我们增加额外的属性b和c对foo对象本身。b并且c是foo自己的，还是非继承财产，a是原型的财产foo。</p>
+<p>原型是子对象的模板对象。对象从其原型继承属性。</p>
+<p>如果我们记录该foo对象，则会得到foo的<strong>proto</strong>属性具有a其值设置为1的属性。</p>
+<p>如果要创建没有原型的对象，则可以Object.create使用参数调用该方法，null以便<strong>proto</strong>不设置该属性。</p>
+<p>例如，我们可以编写以下代码来创建对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> foo = <span class="built_in">Object</span>.create（<span class="literal">null</span>）;</span><br><span class="line">foo.b = <span class="number">1</span>;</span><br><span class="line">foo.c = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
 
-<p>我们可以将值放在对象中，如下所示：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> descs = &#123;  </span><br><span class="line">    <span class="string">'border'</span>: <span class="string">'kind dog'</span>,  </span><br><span class="line">    <span class="string">'pitbull'</span>: <span class="string">'angry dog'</span>,  </span><br><span class="line">    <span class="string">'german'</span>: <span class="string">'smart dog'</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> desc = descs[<span class="string">'border'</span>]</span><br></pre></td></tr></table></figure>
-
-<p>在上面的代码中，我们将case值作为属性，将返回值作为属性的值。</p>
-<p>然后，我们可以像在最后一行中一样获取值，而不用调用longyswitch语句。</p>
-<p>如果要获取默认情况，可以使用||。如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> desc = descs[<span class="string">'foo'</span>] || <span class="string">''</span>;</span><br></pre></td></tr></table></figure>
-
-<p>现在，我们将一个长的switch语句缩小为一个小对象。</p>
-<p><strong>结论</strong></p>
-<p>在许多情况下，我们可以减少if并将语句切换为较短的代码。我们应该记住要使用三元运算符，短路运算和将switch语句更改为字典对象的快捷方式，以使我们的代码更短，更清晰。</p>
+<p>然后，如果我们记录的值foo，我们将看到它没有<strong>proto</strong>属性，这意味着该对象没有原型。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>有很多方法可以简洁地创建对象。我们不应该只使用Object构造函数来创建对象。</p>
+<p>这是因为与定义对象文字相比，它没有任何好处。它们都继承Object和使用构造函数是完成同一件事，但他们各自方法有所不同。</p>
+<p>创建对象的替代方法，包括使用类作为新对象的模板。</p>
+<p>最后，我们可以使用Object.create来创建具有所需原型的对象。</p>
 
           
             <div class='article_footer'>
@@ -564,10 +551,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-16T16:15:02+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-05-17T22:23:07+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2020年5月16日</p>
+    <p>更新于：2020年5月17日</p>
   </a>
 </div>
 
@@ -576,7 +563,7 @@
         
           
   
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>优化代码</p></a></div>
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="nofollow"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i><p>面向对象</p></a></div>
 
 
         
@@ -594,8 +581,10 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://bj-houzhenyu.github.io/2020/05/16/20200516/&title=如何避免在javaScript中避免使用大量if语句~！ - 侯先森的Blog&summary=
-​    为什么要分享这篇文章呢，是因为前一个月公司有项目重构，在简化优化代码的同时发现代码中有大量的 if 语句，这会让人有时候觉得很痛苦。其实，在很多地方，我们可以不需要它们。我们可以将if语句替换为其他类型的代码，以使我们的代码更短，更清晰。
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://bj-houzhenyu.github.io/2020/05/17/20200517/&title=那些必会的js最佳做法——创建对象 - 侯先森的Blog&summary=
+​    这几天正在翻看一些公司的招聘信息，看到很多都有一条要求掌握面向对象编程！确实面向对象是每个前端工程师必备的技能，在这里就简单写一下我理解的，分享给大家，面向对象编程并不是一下两下就能说清楚，所以这只是第一篇哦！
+JavaScript是一种非常宽容的语言。编写即使有些小错误的代码，依然可以很容易的运行。
+在本文中，我们将探讨创建JavaScript对象的最佳方法，而不是通过使用Object构造函数。
 "
           
           >
@@ -608,8 +597,10 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://bj-houzhenyu.github.io/2020/05/16/20200516/&title=如何避免在javaScript中避免使用大量if语句~！ - 侯先森的Blog&summary=
-​    为什么要分享这篇文章呢，是因为前一个月公司有项目重构，在简化优化代码的同时发现代码中有大量的 if 语句，这会让人有时候觉得很痛苦。其实，在很多地方，我们可以不需要它们。我们可以将if语句替换为其他类型的代码，以使我们的代码更短，更清晰。
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://bj-houzhenyu.github.io/2020/05/17/20200517/&title=那些必会的js最佳做法——创建对象 - 侯先森的Blog&summary=
+​    这几天正在翻看一些公司的招聘信息，看到很多都有一条要求掌握面向对象编程！确实面向对象是每个前端工程师必备的技能，在这里就简单写一下我理解的，分享给大家，面向对象编程并不是一下两下就能说清楚，所以这只是第一篇哦！
+JavaScript是一种非常宽容的语言。编写即使有些小错误的代码，依然可以很容易的运行。
+在本文中，我们将探讨创建JavaScript对象的最佳方法，而不是通过使用Object构造函数。
 "
           
           >
@@ -622,8 +613,10 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://bj-houzhenyu.github.io/2020/05/16/20200516/&title=如何避免在javaScript中避免使用大量if语句~！ - 侯先森的Blog&summary=
-​    为什么要分享这篇文章呢，是因为前一个月公司有项目重构，在简化优化代码的同时发现代码中有大量的 if 语句，这会让人有时候觉得很痛苦。其实，在很多地方，我们可以不需要它们。我们可以将if语句替换为其他类型的代码，以使我们的代码更短，更清晰。
+          href="http://service.weibo.com/share/share.php?url=https://bj-houzhenyu.github.io/2020/05/17/20200517/&title=那些必会的js最佳做法——创建对象 - 侯先森的Blog&summary=
+​    这几天正在翻看一些公司的招聘信息，看到很多都有一条要求掌握面向对象编程！确实面向对象是每个前端工程师必备的技能，在这里就简单写一下我理解的，分享给大家，面向对象编程并不是一下两下就能说清楚，所以这只是第一篇哦！
+JavaScript是一种非常宽容的语言。编写即使有些小错误的代码，依然可以很容易的运行。
+在本文中，我们将探讨创建JavaScript对象的最佳方法，而不是通过使用Object构造函数。
 "
           
           >
@@ -648,17 +641,11 @@
         
           <div class="prev-next">
             
-              <a class='prev' href='/2020/05/17/20200517/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>那些必会的js最佳做法——创建对象</p>
-                <p class='content'>
-​    这几天正在翻看一些公司的招聘信息，看到很多都有一条要求掌握面向对象编程！确实面向对象是每个前端工程师必备的技能，在这里就简单写一下我理解的，分享给大家，面向对象编程并不是一下两下就能...</p>
-              </a>
             
-            
-              <a class='next' href='/2020/05/07/MySQL01/'>
-                <p class='title'>前端必会的mysql讲解<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+              <a class='next' href='/2020/05/16/20200516/'>
+                <p class='title'>如何避免在javaScript中避免使用大量if语句~！<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
                 <p class='content'>
-随着现在前端开发人员与日俱增，社会如此美好，技术如此高超，不掌握一门神奇的语言怎么对得起将来的自己？？如果你曾几何时想自己开发简单服务器，那必少不了对数据库的操作，推荐Mysql~（如果看不懂...</p>
+​    为什么要分享这篇文章呢，是因为前一个月公司有项目重构，在简化优化代码的同时发现代码中有大量的 if 语句，这会让人有时候觉得很痛苦。其实，在很多地方，我们可以不需要它们。我们可以将i...</p>
               </a>
             
           </div>
@@ -702,7 +689,7 @@
 
   <script>
     window.subData = {
-      title: '如何避免在javaScript中避免使用大量if语句~！',
+      title: '那些必会的js最佳做法——创建对象',
       tools: true
     }
   </script>
@@ -717,6 +704,20 @@
     
     
 
+
+  <section class="widget toc-wrapper shadow desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Don’t-use-the-Object-建设者"><span class="toc-text">Don’t use the Object 建设者</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结论"><span class="toc-text">结论</span></a></li></ol>
+    </div>
+  </section>
 
 
   
